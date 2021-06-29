@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-console.log(process.env.TESTING)
 
 const app = require('./server');
 require('./database');
