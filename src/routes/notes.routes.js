@@ -22,6 +22,6 @@ router.put('/notes/edit/:id',)
 
 // Delete notes
 
-router.delete('/notes/delete/:id', deleteNote)
+router.delete('/notes/delete/:id', deleteNote);
 
 module.exports = router;
