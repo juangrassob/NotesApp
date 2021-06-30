@@ -6,7 +6,9 @@ const {
     createNewNote,
     renderNotes,
     renderEditForm,
-    deleteNote 
+    updateNote,
+    deleteNote, 
+    
 } = require('../controllers/notes.controller')
 
 // New note
@@ -18,7 +20,7 @@ router.get('/notes', renderNotes);
 
 // Edit notes
 router.get('/notes/edit/:id', renderEditForm);
-router.put('/notes/edit/:id',)
+router.put('/notes/edit/:id', updateNote)
 
 // Delete notes
 
