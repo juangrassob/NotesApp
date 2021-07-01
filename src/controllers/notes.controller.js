@@ -1,4 +1,3 @@
-const notes = require('../models/notes');
 const Note = require('../models/notes');
 
 const notesController = {};
@@ -12,16 +11,25 @@ notesController.renderNotesForm = (req, res) => {
 notesController.createNewNote = async (req, res) => {
     const { title, description } = req.body;
     const newNote = new Note({ title, description });
-    await newNote.save();
-    req.flash('success_msg', 'Note added succesfully');
-    res.redirect('/notes');
+    newNote.user = req.user._id;
+    console.log(newNote);
+    await newNote.save()
+    .then(data => {
+        req.flash('success_msg', 'Note added succesfully');
+        res.redirect('/notes');
+    })
+    .catch(err => {
+        console.log(err);
+        req.flash('error_msg', 'There was an error, please try again.');
+        res.redirect('/notes');
+    });
 }
 
 // Get all notes
-notesController.renderNotes = async (req, res) => {
-    const notes = await Note.find().lean();
-    console.log(notes);
-    res.render('notes/all-notes', { notes })
+notesController.renderNotes = async (req, res, next) => {
+    const notes = await Note.find({user: req.user._id}).lean();
+    res.render('notes/all-notes', { notes });
+    next();
 }
 
 // Edit notes

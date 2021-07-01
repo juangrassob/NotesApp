@@ -25,6 +25,7 @@ app.set('view engine', '.hbs');
 // Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 // Envio el metodo a travez de una query del httpel mid
 // ya que no se pueden madar forms con metodo DELETE o PUT
 app.use(methodOverride('_method'));

@@ -9,6 +9,7 @@ const {
     welcame
 } = require('../controllers/users.controller');
 
+
 // SignUp
 router.get('/users/signup', renderSingUpForm);
 router.post('/users/signup', signup)
@@ -18,6 +19,11 @@ router.post('/users/signin', signin);
 // Logout
 router.get('/users/logout', logout);
 
+router.get('/users/session', (req, res) => {
+    res.send(`Body: ${req.body} User: ${req.user}`);
+    console.log(req.body);
+    console.log(req.user._id);
+})
 
 
 
