@@ -5,7 +5,8 @@ const {
     renderSingUpForm,
     logout,
     signup,
-    signin
+    signin,
+    welcame
 } = require('../controllers/users.controller');
 
 // SignUp

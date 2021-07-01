@@ -15,7 +15,7 @@ UserSchema.methods.encryptPassword = async password =>{
     return await bcrypt.hash(password, salt);
 };
 
-UserSchema.method.matchPassword = async function(password) {
+UserSchema.methods.matchPassword = async function(password) {
     //Es un metodo de UserSchema, por lo que this.password hace referencia a la pass que esta guardada en la db
     return await bcrypt.compare(password, this.password) ; 
 }
