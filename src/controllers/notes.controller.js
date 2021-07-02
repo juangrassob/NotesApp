@@ -34,7 +34,7 @@ notesController.renderNotes = async (req, res, next) => {
 
 // Edit notes
 notesController.renderEditForm = async (req, res) => {
-    const note = await notes.findById(req.params.id).lean();
+    const note = await Note.findById(req.params.id).lean();
     res.render('notes/edit-notes', { note });
 }
 
